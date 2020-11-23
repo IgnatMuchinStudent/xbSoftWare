@@ -11,7 +11,7 @@ class Map {
       }));
   }
 
-  getCountry = (side) => {
+  getCountry(side) {
     switch (side.toLowerCase()) {
       case "northernmost":
         return this.data.reduce((acc, city) =>
@@ -33,9 +33,9 @@ class Map {
         return `There is no such side of the world.
   You should choose: northernmost, southernmost, westernmost, easternmost `;
     }
-  };
+  }
 
-  getNearCity = (latitude, longitude) => {
+  getNearCity(latitude, longitude) {
     let index = 0;
     let sumCordinats = Math.abs(latitude + longitude);
     this.data.map((i, ind) => {
@@ -47,7 +47,7 @@ class Map {
       }
     });
     return this.data[index].name;
-  };
+  }
 
   getStates() {
     return [
@@ -56,7 +56,7 @@ class Map {
   }
 }
 
-const map = new Map(`
+const cityMap = new Map(`
 "Nashville, TN", 36.17, -86.78;
 
 "New York, NY", 40.71, -74.00;
@@ -71,8 +71,8 @@ const map = new Map(`
 
 "Memphis, TN", 35.15, -90.05`);
 
-console.log(map.getCountry("southernmost"));
-console.log(map.getCountry("Westernmost"));
-console.log(map.getNearCity(46, -120));
-console.log(map.getNearCity(34, -117));
-console.log(map.getStates());
+console.log(cityMap.getCountry("southernmost"));
+console.log(cityMap.getCountry("Westernmost"));
+console.log(cityMap.getNearCity(46, -120));
+console.log(cityMap.getNearCity(34, -117));
+console.log(cityMap.getStates());
